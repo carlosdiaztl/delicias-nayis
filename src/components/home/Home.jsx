@@ -77,7 +77,7 @@ const Home = () => {
         <Dashboard />
 
       <div className="main p-4">
-        <h1>Restaurantes y cafes </h1>
+        <h1>Delicias Nayis </h1>
         <section className="main_dashboard">
           {/* <Dashboardtwo /> */}
         </section>

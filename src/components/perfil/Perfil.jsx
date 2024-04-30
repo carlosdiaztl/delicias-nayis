@@ -116,7 +116,7 @@ const Perfil = () => {
           <h3>
            Usuarios
           </h3>
-          {usuarios && usuarios.length && (
+          {usuarios && usuarios.length ? (
             <div className='table-responsive'>
 
             <Table striped bordered hover>
@@ -138,7 +138,7 @@ const Perfil = () => {
               </tbody>
             </Table>
             </div>
-          ) }
+          ) :''}
         </div>
       ) : (
         <div className="d-flex align-items-center">

@@ -111,7 +111,7 @@ const Recientes = () => {
       <NavBar />
 <div className='container'>
 
-{comprasStore && comprasStore.length && !userStore.admin && (
+{comprasStore && comprasStore.length && !userStore.admin ? (
   <div className="recientes container p-1 m-2">
           <h3>Recientes</h3>
           <button onClick={deleteAll}>Vaciar carrito</button>
@@ -160,13 +160,13 @@ const Recientes = () => {
           )}
         </div>
   
-)}
-      {userStore && userStore.admin && (
+):''}
+      {userStore && userStore.admin ? (
         <div className='col-12 d-flex justify-content-end'>
           <span className='pull-right text-right '>Ver historial de Pedidos</span>
         </div>
-      ) }
-      {compras.length && userStore.admin && (
+      ):'' }
+      {compras.length && userStore.admin ? (
         <div className="table-responsive">
           <table className="table">
             <thead>
@@ -198,8 +198,8 @@ const Recientes = () => {
             </tbody>
           </table>
         </div>
-      )}
-      {userCompras.length && !userStore.admin && (
+      ):''}
+      {userCompras.length && !userStore.admin ? (
         <div className="table-responsive">
           <table className="table">
             <thead>
@@ -226,7 +226,7 @@ const Recientes = () => {
             </tbody>
           </table>
         </div>
-      )}
+      ):''}
       <Footer />
       </div>
     </>

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Carousel from 'react-bootstrap/Carousel';
-import promo2 from "../../../assets/Promo2.png";
-import promo4 from "../../../assets/promo5.png";
-import promo5 from "../../../assets/helados 2x1.jpg";
-import promo6 from "../../../assets/promocomida.png";
+import promo2 from "../../../assets/hamburguesaespecial.jpg";
+import promo4 from "../../../assets/restaurante2.jpg";
+import promo5 from "../../../assets/restaurante1.jpg";
 import "./style.scss";
 
 const Dashboard = () => {
@@ -42,7 +41,7 @@ const Dashboard = () => {
     return () => clearTimeout(timer);
   }, [carrusel]);
 
-  const images = [promo2, promo4, promo5, promo6];
+  const images = [promo2, promo4, promo5];
 
   return (
     <Carousel
