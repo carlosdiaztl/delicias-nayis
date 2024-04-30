@@ -1,0 +1,18 @@
+/* Función para media queries */
+@mixin from($size) {
+  @media (max-width: $size) {
+    @content;
+  }
+}
+
+/* Fuentes */
+@mixin fontface($name, $file) {
+  $path: '../assets/fonts/' + $name + '/' + $file;
+
+  @font-face {
+    font-family: '#{$file}';
+    src: url($path + '.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+}

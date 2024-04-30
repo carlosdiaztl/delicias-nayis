@@ -1,0 +1,89 @@
+/* Breakpoints */
+$small: 440px; /*-------- Mobile devices*/
+$s-medium: 570px; /*-------- Tablet devices*/
+$medium: 768px;
+$large: 960px;
+$x-large: 1060px; /*-------- Desktop devices*/
+$xx-large: 1250px;
+$xxx-large: 1440px;
+$high-quality: 1700px;
+
+/* Colors - Static*/
+$color-white: #fff;
+
+$color-primary-25: #fcfaff;
+$color-primary-50: #f9f5ff;
+$color-primary-100: #f4ebff;
+$color-primary-200: #e9d7fe;
+$color-primary-300: #d6bbfb;
+$color-primary-400: #b692f6;
+$color-primary-600: #7f56d9;
+$color-primary-700: #6941c6; //Primary
+$color-primary-900: #42307d;
+
+$color-gray-25: #fcfcfd;
+$color-gray-50: #f9fafb;
+$color-gray-100: #f2f4f7;
+$color-gray-200: #eaecf0;
+$color-gray-300: #d0d5dd;
+$color-gray-400: #98a2b3;
+$color-gray-500: #667085;
+$color-gray-600: #475467;
+$color-gray-700: #344054;
+$color-gray-900: #101828;
+
+$color-warning-25: #fffcf5;
+$color-warning-50: #fffaeb;
+$color-warning-100: #fef0c7;
+$color-warning-200: #fedf89;
+$color-warning-300: #fec84b;
+$color-warning-400: #fdb022;
+$color-warning-600: #dc6803;
+$color-warning-700: #b54708;
+$color-warning-900: #7a2e0e;
+
+$color-error-25: #fffbfa;
+$color-error-50: #fef3f2;
+$color-error-100: #fee4e2;
+$color-error-200: #fecdca;
+$color-error-300: #fda29b;
+$color-error-400: #f97066;
+$color-error-500: #f04438;
+$color-error-600: #d92d20;
+$color-error-700: #b42318;
+$color-error-900: #7a271a;
+
+$color-success-25: #f6fef9;
+$color-success-50: #ecfdf3;
+$color-success-100: #d1fadf;
+$color-success-200: #a6f4c5;
+$color-success-300: #6ce9a6;
+$color-success-400: #32d583;
+$color-success-600: #039855;
+$color-success-700: #027a48;
+$color-success-900: #054f31;
+
+/* Z-index */
+$z-back: -1;
+$z-none: 0;
+$z-floor: 1;
+$z-medium: 10;
+$z-up: 50;
+$z-top: 100;
+$z-super: 200;
+
+/* Fonts */
+$inter-900: 'Inter-Black'; //900
+$inter-700: 'Inter-Bold'; //700
+$inter-800: 'Inter-ExtraBold'; //800
+$inter-200: 'Inter-ExtraLight'; //200
+$inter-300: 'Inter-Light'; //300
+$inter-500: 'Inter-Medium'; //500
+$inter-400: 'Inter-Regular'; //400
+$inter-600: 'Inter-SemiBold'; //600
+$inter-100: 'Inter-Thin'; //100
+
+$base-size: 18;
+@function size($target, $context: $base-size) {
+  @return calc($target / $context) * 1rem;
+}

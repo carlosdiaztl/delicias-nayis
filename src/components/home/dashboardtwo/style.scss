@@ -1,0 +1,15 @@
+aside{display: flex;
+    align-content: space-around;
+    button{
+        width: 30vw;
+        scroll-snap-align: center;
+        object-fit: cover;
+        margin-left: 5px;
+        border-radius: 5px;
+        border: none;
+    }
+    button:hover{
+        background-color: #ffe031;;
+    }
+   
+   }

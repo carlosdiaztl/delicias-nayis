@@ -1,0 +1,16 @@
+.perfil {
+  width: 100vw;
+  height: 95vh;
+  display: flex;
+  justify-content: center;
+  &_img {
+    width: 100px !important;
+    height: 100px !important;
+    max-width: 400px;
+    max-height: 500px;
+  }
+}
+.perfiles {
+  display: flex;
+  gap: 10px;
+}

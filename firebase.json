@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "site":"delyvery-app-d0ca2",
+    "public": "build",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

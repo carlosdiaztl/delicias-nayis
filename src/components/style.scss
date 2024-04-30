@@ -1,0 +1,78 @@
+.createAccount{  
+        form{ display: flex;  
+              flex-direction: column;
+              gap: 10px;
+              input{
+               
+                border: none;
+                border-bottom: 1px solid;
+              }
+              button{
+                position:absolute;
+                bottom: 1px;
+                width: 95%;
+                margin-left: 2.5%;
+                background-color: #ffe031;
+                border-radius: 10px;
+                height: 6.5%;
+                border: none;
+                
+              }
+    }
+}
+.signin{
+  img{
+    width: 30%;
+  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    label{
+      display: flex;
+      flex-direction: column;
+      input{
+        width: 90vw;
+        border: none;
+        border-bottom: solid 2px;
+        border-color: #ffe031;
+      }
+    }
+    button{
+      position: absolute;
+      bottom: 10%;
+      width: 90%;
+      height: 40px;
+      background-color: #ffe031;
+    }
+  }
+
+}
+.verification{
+  display: flex;
+  flex-direction: column;
+ align-items: center;
+  img{
+    width:30% ;
+  }
+  form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    label{
+      width: 60%;
+      font-size:medium;
+      input{
+        border: none;
+        border-bottom: solid 1px;
+        width: 60vw;
+      }
+    }
+  }
+  
+ 
+
+}
