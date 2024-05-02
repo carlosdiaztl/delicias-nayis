@@ -1,8 +1,8 @@
 Proyecto de comidas tipo rappi donde se integra la validacion con celular, y cuenta de gmail,
 se maneja un perfil, un usuario admin con las funciones de agregar restaurantes y platos 
 y un usuario el cual puede modificar su perfil y comprar a disposición, actualemnte solo diseño movil, only phone design
-
-link : https://crud-completo-a347c.web.app/
+ 
+link : https://delyvery-app-d0ca2.web.app
 
 
 
