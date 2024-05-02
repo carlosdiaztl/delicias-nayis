@@ -110,12 +110,12 @@ const Home = () => {
                               alt="Rating"
                             />
                             <p className="card-text">
-                              Work time {item.apertureTime}:30-{item.closeTime}
-                              :00
+                              Horario {item.apertureTime}:00 AM-{item.closeTime}
+                              :00 PM
                             </p>
                             <p className="card-text">
                               <small className="text-muted">
-                                Before you {item.minPrice}$
+                                Desde {item.minPrice}$
                               </small>
                             </p>
                           </div>
@@ -150,12 +150,12 @@ const Home = () => {
                               alt="Rating"
                             />
                             <p className="card-text">
-                              Work time {item.apertureTime}:30-{item.closeTime}
-                              :00
+                              Horario {item.apertureTime}:00 AM-{item.closeTime}
+                              :00 PM
                             </p>
                             <p className="card-text">
                               <small className="text-muted">
-                                Before you {item.minPrice}$
+                                Desde {item.minPrice}$
                               </small>
                             </p>
                           </div>

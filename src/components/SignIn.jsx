@@ -71,7 +71,7 @@ const SignIn = () => {
       <h2>SignIn </h2>
       <form onSubmit={handleSubmit}>
         <label>
-          Phone number
+          Numero de telefono
           <input
             type="number"
             onChange={(e) => {
@@ -88,7 +88,7 @@ const SignIn = () => {
           style={{ width: 50, marginLeft: 30 }}
           onClick={handleLoginGoogle}
         />
-        <button type="submit"> Sign in</button>
+        <button type="submit">Logueate</button>
       </form>
     </div>
   );

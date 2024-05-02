@@ -64,10 +64,10 @@ const Search = () => {
         <input
           onChange={SearchInput}
           value={value}
-          placeholder="Search for a dish"
+          placeholder=" Busca un plato..."
         />
       </span>
-      <p className="p"> Recent Searches</p>
+      {/* <p className="p"> Recent Searches</p> */}
       <section className='container'>
         {busqueda && platosFind.length ? (
           platosFind.map((plato, index) => (

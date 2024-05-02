@@ -70,7 +70,7 @@ useEffect(() => {
      <img src={render} />
     
 
-      <button onClick={nextImg}> Next</button>
+      <button onClick={nextImg}> Siguiente</button>
     </div>
   )
 }

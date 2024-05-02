@@ -7,6 +7,9 @@ import { fileUpLoad } from '../services/fileUpLoad';
 import { useDispatch, useSelector } from 'react-redux';
 import { actionAddRestaurantesAsync } from '../redux/actions/restaurantesActions';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import NavBar from './navbar/NavBar';
+import Footer from './home/footer/Footer';
 
 const inputList = [
   {
@@ -30,12 +33,12 @@ const inputList = [
     name: 'minPrice',
   },
   {
-    label: 'aperture time',
+    label: 'Hora de apertura',
     type: 'number',
     name: 'open',
   },
   {
-    label: 'close time',
+    label: 'Hora cierre',
     type: 'number',
     name: 'close',
   },
@@ -119,13 +122,17 @@ const AddRestaurant = () => {
       image: image,
     };
     dispatch(actionAddRestaurantesAsync(newRestaurant));
-  };
-  const goHome = () => {
-    navigate('/home');
+    Swal.fire(
+      'Restaurante Agregado',
+      'El restaurante se ha agregado correctamente',
+      'success'
+    ).then(() => {
+      navigate('/home');
+    });
   };
   return (
     <div className="p-5">
-      <button onClick={goHome}>home </button>
+      <NavBar />
       <h1>Agregar nuevo restaurante</h1>
       <Form onSubmit={handleSubmit(onSubmit)}>
         {inputList.map((item, index) => {
@@ -136,7 +143,7 @@ const AddRestaurant = () => {
                   aria-label="Default select example"
                   {...register(item.name)}
                 >
-                  <option value="">Open this select menu</option>
+                  <option value="">Abra este menu</option>
                   {category.map((item) => (
                     <option
                       key={item.value}
@@ -176,6 +183,7 @@ const AddRestaurant = () => {
           Agregar restaurante
         </Button>
       </Form>
+      <Footer />
     </div>
   );
 };

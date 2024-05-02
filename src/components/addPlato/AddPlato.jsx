@@ -6,6 +6,8 @@ import { Button, FloatingLabel, Form } from 'react-bootstrap';
 import { actionGetrestaurantesAsync } from '../../redux/actions/restaurantesActions';
 import { fileUpLoad } from '../../services/fileUpLoad';
 import { actionAddPlatoAsync } from '../../redux/actions/platosActions';
+import Footer from '../home/footer/Footer';
+import NavBar from '../navbar/NavBar';
 
 const category = [
   {
@@ -60,7 +62,7 @@ const inputList = [
     name: 'price',
   },
   {
-    label: 'Propiedad',
+    label: 'Propiedad de',
     type: 'selectTwo',
     name: 'property',
   },
@@ -77,11 +79,9 @@ const AddPlato = () => {
   const navigate = useNavigate();
   const userStore = useSelector((store) => store.userStore);
   useEffect(() => {
-    if (userStore.admin) {
-      console.log(true);
-    } else {
+    if (!userStore.admin) {
       navigate('/home');
-    }
+    } 
   }, [userStore]);
   useEffect(() => {
     dispatch(actionGetrestaurantesAsync());
@@ -108,12 +108,9 @@ const AddPlato = () => {
     dispatch(actionAddPlatoAsync(newPlate));
     navigate('/home');
   };
-  const goHome = () => {
-    navigate('/home');
-  };
   return (
     <div className="p-5">
-      <button onClick={goHome}>home </button>
+      <NavBar />
       <h1>Agregar nuevo plato</h1>
       <Form onSubmit={handleSubmit(onSubmit)}>
         {inputList.map((item, index) => {
@@ -189,6 +186,7 @@ const AddPlato = () => {
           Agregar plato
         </Button>
       </Form>
+      <Footer />
     </div>
   );
 };
