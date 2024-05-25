@@ -8,6 +8,7 @@ import { actionGetrestaurantesAsync } from '../../redux/actions/restaurantesActi
 import Footer from '../home/footer/Footer';
 import './style.scss';
 import NavBar from '../navbar/NavBar';
+import NewFooter from '../home/footer/NewFooter';
 
 const Restaurantes = () => {
   const dispatch = useDispatch();
@@ -44,34 +45,28 @@ const Restaurantes = () => {
   };
 
   return (
-    <div className="container">
+    <>
+
       <NavBar/>
+    <div className="container">
 
       <h2>Bienvenido a {name}</h2>
-      {restaurante && (
-        <div className="row">
-          <div className="col-md-6">
-            <figure>
-              <img src={restaurante.image} alt={restaurante.name} className="img-fluid" />
-            </figure>
-          </div>
-          <div className="col-md-6">
-            <h4>{restaurante.name}</h4>
-            <p>{restaurante.description}</p>
-          </div>
-        </div>
-      )}
-      <div className="row">
+      
+      <div style={{ minHeight: "40vh" }} className="row">
         {platosRestaurante.map((plate, index) => (
           <div key={index} className="col-md-4 col-sm-6 platos" onClick={() => goProduct(plate.name)}>
             <img src={plate.image} alt={plate.name} className="img-fluid" />
-            <p>{plate.name}</p>
-            <h6>${plate.price}</h6>
+            <p><strong className='text-dark'>{plate.name}</strong> </p>
+            <p className='text-secondary'>{plate.description}</p>
+            <p className='text-danger'>${plate.price}</p>
+           
           </div>
         ))}
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
+      <NewFooter />
+    </>
   );
 };
 

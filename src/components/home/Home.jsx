@@ -10,13 +10,20 @@ import threeStars from '../../assets/3.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { actionUserLogOutAsync } from '../../redux/actions/userActions';
 import './style.scss';
-import Footer from './footer/Footer';
+// import Footer from './footer/Footer';
 import { actionGetrestaurantesAsync } from '../../redux/actions/restaurantesActions';
 import { auth } from '../../firebase/firebaseconfig';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { actionGetPlatosAsync } from '../../redux/actions/platosActions';
 import NavBar from '../navbar/NavBar';
+import './style.scss';
+import about_img from './../../assets/aquitania.jpg';
+import NewFooter from './footer/NewFooter';
+import perro from './../../assets/perro.jpg'
+import burguerespecial from './../../assets/hamburguesaespecial.jpg'
+import hamburguesa from './../../assets/hamburguesa.jpg'
+import chorizo from './../../assets/chorizocombo.jpg'
 const Home = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
@@ -73,15 +80,43 @@ const Home = () => {
 
   return (
     <div className="body">
-      <NavBar/>
-        <Dashboard />
+      <NavBar />
+      <Dashboard />
 
       <div className="main p-4">
-        <h1>Delicias Nayis </h1>
-        <section className="main_dashboard">
-          {/* <Dashboardtwo /> */}
-        </section>
-        <div className="col-12">
+        <section className="main_dashboard">{/* <Dashboardtwo /> */}</section>
+        <div className="about_section layout_padding">
+          <div className="container">
+            <div className="about_section_2">
+              <div className="row">
+                <div className="col-md-6">
+                  <div className="about_taital_box">
+                    <h1 className="about_taital">Sobre nuestra tienda</h1>
+                    <h1 className="about_taital_1">
+                      Venta de comidas rapidas{' '}
+                    </h1>
+                    <p className=" about_text">
+                      Mas informacion de la aplicacion Esta aplicacion se creo
+                      con el fin de facilitar la entrega de los pedidos de
+                      comidas rapidas para asi disminuir el tiempo de espera
+                      para los clientes y esto permite que el pedido sea
+                      realizado rapidamente en lugar de esperar para su entrega
+                    </p>
+                    <div className="readmore_btn">
+                      <a href="/restaurantedelicias%20nayis">Leer mas...</a>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="image_iman">
+                    <img src={about_img} className="about_img" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* <div className="col-12">
           <div className="row">
             {filtroRestaurantes.length
               ? filtroRestaurantes.map((item, index) => (
@@ -165,7 +200,7 @@ const Home = () => {
                   </div>
                 ))}
           </div>
-        </div>
+        </div> */}
       </div>
       {comprasStore.length ? (
         <button onClick={irCompras} className="botonCompras">
@@ -174,7 +209,76 @@ const Home = () => {
       ) : (
         ''
       )}
-      <Footer />
+      {/* <Footer /> */}
+
+      <div className="coffee_section layout_padding">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <h1 className="coffee_taital">Nuestras Ofertas</h1>
+            </div>
+          </div>
+        </div>
+        <div className="coffee_section_2">
+          <div>
+            <div>
+              <div>
+                <div className="container-fluid">
+                  <div className="row">
+                    <div className="col-lg-3 col-md-6">
+                      <div className="coffee_img">
+                        <img src={burguerespecial} />
+                      </div>
+                      <div className="coffee_box">
+                        <h3 className="types_text">Perro Burguer</h3>
+                        <div className="read_bt">
+                          <a href="">Ver mas</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-lg-3 col-md-6">
+                      <div className="coffee_img">
+                        <img className='coffee_img_2'  src={chorizo} />
+                      </div>
+                      <div className="coffee_box">
+                        <h3 className="types_text">Chorizo</h3>
+                        <div className="read_bt">
+                          <a href="">Ver mas</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-lg-3 col-md-6">
+                      <div className="coffee_img">
+                        <img src={perro}/>
+                      </div>
+                      <div className="coffee_box">
+                        <h3 className="types_text">Perro con todo</h3>
+                        <div className="read_bt">
+                          <a href="">Ver mas</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-lg-3 col-md-6">
+                      <div className="coffee_img">
+                        <img src={hamburguesa} />
+                      </div>
+                      <div className="coffee_box">
+                        <h3 className="types_text">Hamburguesa</h3>
+
+                        <div className="read_bt">
+                          <a href="">Read More</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+          </div>
+        </div>
+      </div>
+      <NewFooter />
     </div>
   );
 };

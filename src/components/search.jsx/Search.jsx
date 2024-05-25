@@ -7,6 +7,7 @@ import { actionGetPlatosAsync } from '../../redux/actions/platosActions';
 import Footer from '../home/footer/Footer';
 import './style.scss';
 import NavBar from '../navbar/NavBar';
+import NewFooter from '../home/footer/NewFooter';
 
 const Search = () => {
   const navigate = useNavigate();
@@ -67,25 +68,16 @@ const Search = () => {
           placeholder=" Busca un plato..."
         />
       </span>
+      
       {/* <p className="p"> Recent Searches</p> */}
-      <section className='container'>
+      <section style={{ minHeight: "30vh" }} className='container row'>
         {busqueda && platosFind.length ? (
-          platosFind.map((plato, index) => (
-            <span
-              className="cardP"
-              onClick={() => {
-                goProduct(plato.name);
-              }}
-              key={index}
-            >
-              <figure>
-                {' '}
-                <img src={plato.image} />
-              </figure>{' '}
-              <span>
-                <h5>{plato.name} </h5> <h5>$ {plato.price}</h5>{' '}
-              </span>
-            </span>
+          platosFind.map((plate, index) => (
+            <div key={index} className="col-md-4 col-sm-6 platos p-3" onClick={() => goProduct(plate.name)}>
+            <img src={plate.image} alt={plate.name} className="img-fluid" />
+            <p>{plate.name}</p>
+            <h6>${plate.price}</h6>
+          </div>
           ))
         ) : (
           <></>
@@ -98,8 +90,8 @@ const Search = () => {
           <></>
         )}
       </section>
-
-      <Footer />
+      {/* <Footer /> */}
+      <NewFooter />
     </div>
   );
 };

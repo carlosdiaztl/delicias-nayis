@@ -7,15 +7,15 @@ import "./style.scss";
 
 const Dashboard = () => {
   const [carrusel, setCarrusel] = useState(0);
-  const [alturaImagen, setAlturaImagen] = useState(600);
+  const [alturaImagen, setAlturaImagen] = useState(500);
 
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
       if (width >= 1200) {
-        setAlturaImagen(700);
+        setAlturaImagen(400);
       } else if (width < 1200 && width >= 750) {
-        setAlturaImagen(450);
+        setAlturaImagen(350);
       } else {
         setAlturaImagen(240);
       }
@@ -36,7 +36,7 @@ const Dashboard = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setCarrusel((carrusel + 1) % images.length); 
-    }, 2000);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, [carrusel]);

@@ -15,6 +15,7 @@ import Footer from '../home/footer/Footer';
 import './style.scss';
 import NavBar from '../navbar/NavBar';
 import TimestampTable from '../../services/ConverTime';
+import NewFooter from '../home/footer/NewFooter';
 
 const Recientes = () => {
   const dispatch = useDispatch();
@@ -36,7 +37,6 @@ const Recientes = () => {
     });
   }, []);
   useEffect(() => {
-   
     verCompras();
     verUserCompras();
   }, []);
@@ -72,14 +72,14 @@ const Recientes = () => {
     try {
       // Ejecutar la consulta filtrando por el campo 'userid' igual a 'userStore.uid'
       const querySnapshot = await getDocs(q);
-  
+
       querySnapshot.forEach((doc) => {
         comprasTotalesUser.push({
           id: doc.id,
           ...doc.data(),
         });
       });
-  
+
       setUserCompras(comprasTotalesUser);
       console.log(comprasTotalesUser);
       console.log(userCompras);
@@ -87,7 +87,7 @@ const Recientes = () => {
       console.error('Error al ejecutar la consulta:', error);
     }
   };
-  
+
   const confirmBuy = () => {
     console.log(comprasStore);
     console.log(userStore);
@@ -109,126 +109,144 @@ const Recientes = () => {
   return (
     <>
       <NavBar />
-<div className='container'>
-
-{comprasStore && comprasStore.length && !userStore.admin ? (
-  <div className="recientes container p-1 m-2">
-          <h3>Recientes</h3>
-          <button onClick={deleteAll}>Vaciar carrito</button>
-          <button onClick={confirmBuy}>Confirmar compras</button>
-          {comprasStore.length ? (
-            <div className="table-container">
-              <div className="table-responsive">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Restaurante</th>
-                      <th>Plato</th>
-                      <th>Precio</th>
-                      <th>Cantidad</th>
-                      <th>Total</th>
-                      <th>Estado</th>
-                      <th>Acción</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {comprasStore.map((item, index) => (
-                      <tr key={index}>
-                        <td>{item.restaurante}</td>
-                        <td>{item.platoName}</td>
-                        <td>${item.price}</td>
-                        <td>{item.quantity}</td>
-                        <td>${item.total}</td>
-                        <td>
-                          <span onClick={() => deleteItem(index)}>
-                            {item.confirmacion ? 'Confirmado' : 'Pendiente'}
-                          </span>
-                        </td>
-                        <td>
-                          <button onClick={() => deleteItem(index)}>
-                            Cancelar
-                          </button>
-                        </td>
+      <div style={{ minHeight: '35vh' }} className="container">
+        {comprasStore && comprasStore.length && !userStore.admin ? (
+          <div className="recientes container p-1 m-2">
+            <h3>Recientes</h3>
+            <button className="btn btn-outline-danger mx-2" onClick={deleteAll}>
+              Vaciar carrito
+            </button>
+            <button className="btn btn-outline-danger" onClick={confirmBuy}>
+              Confirmar compras
+            </button>
+            {comprasStore.length ? (
+              <div className="table-container">
+                <div className="table-responsive">
+                  <table className="table align-middle">
+                    <thead>
+                      <tr className="align-bottom">
+                        <th>Restaurante</th>
+                        <th>Plato</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Total</th>
+                        <th>Estado</th>
+                        <th>Acción</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                      {comprasStore.map((item, index) => (
+                        <tr key={index}>
+                          <td>{item.restaurante}</td>
+                          <td>{item.platoName}</td>
+                          <td>${item.price}</td>
+                          <td>{item.quantity}</td>
+                          <td>${item.total}</td>
+                          <td>
+                            <span onClick={() => deleteItem(index)}>
+                              {item.confirmacion ? 'Confirmado' : 'Pendiente'}
+                            </span>
+                          </td>
+                          <td>
+                            <button
+                              className="btn btn-outline-danger"
+                              onClick={() => deleteItem(index)}
+                            >
+                              Cancelar
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
-            </div>
-          ) : (
-            <h3>Tu lista está vacía, compra algo primero</h3>
-          )}
-        </div>
-  
-):''}
-      {userStore && userStore.admin ? (
-        <div className='col-12 d-flex justify-content-end'>
-          <span className='pull-right text-right '>Ver historial de Pedidos</span>
-        </div>
-      ):'' }
-      {compras.length && userStore.admin ? (
-        <div className="table-responsive">
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Restaurante</th>
-                <th>Fecha</th>
-                <th>Nombre del Plato</th>
-                <th>Precio</th>
-                <th>Cantidad</th>
-                <th>Total</th>
-                <th className='text-center'>Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              {compras.map((item, index) => (
-                <tr className="comprasU" key={index}>
-                  <td>{item.restaurante}</td>
-                  <TimestampTable timestamp={item.timestamp} />
-                  <td>{item.platoName}</td>
-                  <td>${item.price}</td>
-                  <td>{item.quantity}</td>
-                  <td>${item.total}</td>
-                  <td className='row justify-content-center'>
-                <button className='col-md-7 btn btn-success my-2'>Conf</button>
-                <button className='col-md-7 btn btn-danger'>tras</button>
-              </td>
+            ) : (
+              <h3>Tu lista está vacía, compra algo primero</h3>
+            )}
+          </div>
+        ) : (
+          ''
+        )}
+        {userStore && userStore.admin ? (
+          <div className="col-12 d-flex justify-content-end">
+            <span className="pull-right text-right ">
+              Ver historial de Pedidos
+            </span>
+          </div>
+        ) : (
+          ''
+        )}
+        {compras.length && userStore.admin ? (
+          <div className="table-responsive">
+            <table className="table align-middle">
+              <thead>
+                <tr>
+                  <th>Restaurante</th>
+                  <th>Fecha</th>
+                  <th>Nombre del Plato</th>
+                  <th>Precio</th>
+                  <th>Cantidad</th>
+                  <th>Total</th>
+                  <th className="text-center">Acciones</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      ):''}
-      {userCompras.length && !userStore.admin ? (
-        <div className="table-responsive">
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Restaurante</th>
-                <th>Fecha</th>
-                <th>Nombre del Plato</th>
-                <th>Precio</th>
-                <th>Cantidad</th>
-                <th>Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              {userCompras.map((item, index) => (
-                <tr className="comprasU" key={index}>
-                  <td>{item.restaurante}</td>
-                  <TimestampTable timestamp={item.timestamp} />
-                  <td>{item.platoName}</td>
-                  <td>${item.price}</td>
-                  <td>{item.quantity}</td>
-                  <td>${item.total}</td>
+              </thead>
+              <tbody>
+                {compras.map((item, index) => (
+                  <tr className="comprasU" key={index}>
+                    <td>{item.restaurante}</td>
+                    <TimestampTable timestamp={item.timestamp} />
+                    <td>{item.platoName}</td>
+                    <td>${item.price}</td>
+                    <td>{item.quantity}</td>
+                    <td>${item.total}</td>
+                    <td className="row justify-content-center">
+                      <button className="col-md-7 btn btn-success my-2">
+                        Conf
+                      </button>
+                      <button className="col-md-7 btn btn-danger">tras</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          ''
+        )}
+        {userCompras.length && !userStore.admin ? (
+          <div className="table-responsive">
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>Restaurante</th>
+                  <th>Fecha</th>
+                  <th>Nombre del Plato</th>
+                  <th>Precio</th>
+                  <th>Cantidad</th>
+                  <th>Total</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      ):''}
-      <Footer />
+              </thead>
+              <tbody>
+                {userCompras.map((item, index) => (
+                  <tr className="comprasU" key={index}>
+                    <td>{item.restaurante}</td>
+                    <TimestampTable timestamp={item.timestamp} />
+                    <td>{item.platoName}</td>
+                    <td>${item.price}</td>
+                    <td>{item.quantity}</td>
+                    <td>${item.total}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          ''
+        )}
+        {/* <Footer /> */}
       </div>
+      <NewFooter />
     </>
   );
 };

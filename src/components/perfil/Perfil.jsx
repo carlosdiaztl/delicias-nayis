@@ -17,6 +17,7 @@ import { FloatingLabel, Form, Card, Table } from 'react-bootstrap';
 import { fileUpLoad } from '../../services/fileUpLoad';
 import Swal from 'sweetalert2';
 import NavBar from '../navbar/NavBar';
+import NewFooter from '../home/footer/NewFooter';
 
 const Perfil = () => {
   const navigate = useNavigate();
@@ -119,7 +120,7 @@ const Perfil = () => {
           {usuarios && usuarios.length ? (
             <div className='table-responsive'>
 
-            <Table striped bordered hover>
+            <Table  striped bordered hover>
               <thead>
                 <tr>
                   <th>Nombre</th>
@@ -194,8 +195,9 @@ const Perfil = () => {
           </Card>
         </div>
       )}
-      <Footer />
+      {/* <Footer /> */}
     </div>
+      <NewFooter />
     </>
   );
 };

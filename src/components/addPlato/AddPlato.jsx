@@ -8,6 +8,7 @@ import { fileUpLoad } from '../../services/fileUpLoad';
 import { actionAddPlatoAsync } from '../../redux/actions/platosActions';
 import Footer from '../home/footer/Footer';
 import NavBar from '../navbar/NavBar';
+import NewFooter from '../home/footer/NewFooter';
 
 const category = [
   {
@@ -186,7 +187,8 @@ const AddPlato = () => {
           Agregar plato
         </Button>
       </Form>
-      <Footer />
+      <NewFooter />
+      {/* <Footer /> */}
     </div>
   );
 };

@@ -10,6 +10,7 @@ import { Card, Button } from 'react-bootstrap';
 import './stylePlato.scss';
 import Footer from '../home/footer/Footer';
 import NavBar from '../navbar/NavBar';
+import NewFooter from '../home/footer/NewFooter';
 
 const Plato = () => {
   const [quantity, setQuantity] = useState(1);
@@ -61,9 +62,9 @@ const Plato = () => {
 
   return (
     <>
+        <NavBar />
       {platoSelect && (
         <div className="container">
-        <NavBar />
           <div className="row justify-content-center">
             <div className="col-md-8">
               <Card>
@@ -98,9 +99,10 @@ const Plato = () => {
               </Card>
             </div>
           </div>
-          <Footer />
+          {/* <Footer /> */}
         </div>
       )}
+          <NewFooter />
     </>
   );
 };

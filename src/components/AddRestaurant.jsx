@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import NavBar from './navbar/NavBar';
 import Footer from './home/footer/Footer';
+import NewFooter from './home/footer/NewFooter';
 
 const inputList = [
   {
@@ -183,7 +184,8 @@ const AddRestaurant = () => {
           Agregar restaurante
         </Button>
       </Form>
-      <Footer />
+      <NewFooter />
+      {/* <Footer /> */}
     </div>
   );
 };
