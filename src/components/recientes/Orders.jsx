@@ -1,5 +1,5 @@
 import { onAuthStateChanged } from 'firebase/auth';
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import { collection, deleteDoc, doc, getDocs, query, where } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -22,24 +22,6 @@ const Orders = () => {
   const comprasStore = useSelector((store) => store.comprasStore);
   const [compras, setCompras] = useState([]);
   const [userCompras, setUserCompras] = useState([]);
-  const sendWpp = () => {
-    const baseURL = "https://wa.me/+573214353505?text=";
-    console.log('wpp');
-  
-    // Mapear comprasStore para obtener un array de nombres de productos
-    const nombresProductos = comprasStore.map(compra => compra.quantity +" "+ compra.platoName  );
-    console.log(nombresProductos);
-  
-    // Unir los nombres de los productos en una sola cadena separada por comas
-    const additionalText = nombresProductos.join(', ');
-  console.log(additionalText);
-    // Construir el enlace de WhatsApp con el mensaje concatenado
-    const wppLink = `${baseURL}Buenas tardes, quisiera pedir: ${additionalText}`;
-  console.log(wppLink);
-    // Abrir el enlace en una nueva ventana
-    window.open(wppLink);
-  };
-  
 
   useEffect(() => {
     dispatch(actionGetPlatosAsync());
@@ -54,17 +36,8 @@ const Orders = () => {
   }, []);
   useEffect(() => {
     verCompras();
-    verUserCompras();
   }, []);
-  const deleteItem = (index) => {
-    const compra = [...comprasStore];
-    compra.splice(index, 1);
-    dispatch(actionDeleteCompra(compra));
-  };
 
-  const deleteAll = () => {
-    dispatch(actionBorrarTodo());
-  };
 
   const verCompras = async () => {
     const comprasTotales = [];
@@ -81,26 +54,14 @@ const Orders = () => {
     setCompras(comprasTotales);
     console.log(comprasTotales);
   };
-  const verUserCompras = async () => {
-    const comprasTotalesUser = [];
-    const userCollection = collection(dataBase, 'compras');
-    const q = query(userCollection, where('userId', '==', userStore.uid));
+  const eliminarCompra = async (id) => {
     try {
-      // Ejecutar la consulta filtrando por el campo 'userid' igual a 'userStore.uid'
-      const querySnapshot = await getDocs(q);
-
-      querySnapshot.forEach((doc) => {
-        comprasTotalesUser.push({
-          id: doc.id,
-          ...doc.data(),
-        });
-      });
-
-      setUserCompras(comprasTotalesUser);
-      console.log(comprasTotalesUser);
-      console.log(userCompras);
+      await deleteDoc(doc(dataBase, 'compras', id));
+      Swal.fire('Eliminado', 'La compra ha sido eliminada con éxito', 'success');
+      // Actualizar la lista de compras después de eliminar
+      setCompras((prevCompras) => prevCompras.filter((compra) => compra.id !== id));
     } catch (error) {
-      console.error('Error al ejecutar la consulta:', error);
+      Swal.fire('Error', 'Hubo un error al eliminar la compra', 'error');
     }
   };
 
@@ -138,7 +99,7 @@ const Orders = () => {
                     <td>{item.quantity}</td>
                     <td>${item.total}</td>
                     <td className="text-center">
-                      <button className="btn btn-danger">Eliminar</button>
+                    <button className="btn btn-danger" onClick={() => eliminarCompra(item.id)}>Eliminar</button>
                     </td>
                   </tr>
                 ))}
