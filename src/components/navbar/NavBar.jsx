@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import logout from '../../assets/logout.png';
-import logo from '../../assets/logonayis.png';
+import logo from '../../assets/logo3.png';
 import { actionUserLogOutAsync } from '../../redux/actions/userActions';
+import './style.scss';
 
 const NavBar = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -14,15 +15,14 @@ const NavBar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const userStore = useSelector((store) => store.userStore);
-  const comprasStore = useSelector((store) => store.comprasStore);
 
   const LogOutUser = () => {
     dispatch(actionUserLogOutAsync());
   };
 
-  const addRestaurant = () => {
-    navigate('/addRestaurant');
-  };
+  // const addRestaurant = () => {
+  //   navigate('/addRestaurant');
+  // };
 
   const addDish = () => {
     navigate('/addPlato');
@@ -33,10 +33,9 @@ const NavBar = () => {
       <div className="container-fluid">
         <a className="navbar-brand" href="/">
           <img
-            className="card-img card-img-left img-fluid"
+            className="card-img card-img-left img-fluid logo-responsive"
             src={logo}
-            style={{ width: '200px' }}
-            alt="Restaurant Image"
+            alt="Restaurant logo"
           />
         </a>
         <button className="navbar-toggler" type="button" onClick={toggleNav}>
@@ -45,68 +44,123 @@ const NavBar = () => {
         <div className={`collapse navbar-collapse ${isNavOpen ? 'show' : ''}`}>
           <div className="row w-100 p-0 m-0">
             <div className="col">
-              <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-4 justify-content-center justify-content-md-start">
-                <li className="nav-item ms-md-4">
-                  <button
-                    className="btn btn-outline-danger nav-link px-4 px-md-2"
-                    onClick={() => navigate('/restaurantedelicias%20nayis')}
-                  >
-                    Productos
-                  </button>
-                </li>
-                 
-                <li className="nav-item">
+              {userStore.admin ? (
+                <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-4 justify-content-center justify-content-md-start">
+                  <li className="nav-item ms-md-4">
                     <button
-                      className="btn btn-outline-danger nav-link px-4 px-md-2"
+                      className="btn btn-outline-danger nav-link px-4 px-md-3"
+                      onClick={() => navigate('/restaurantedelicias%20nayis')}
+                    >
+                      Productos
+                    </button>
+                  </li>
+                  <li className="nav-item">
+                    <button
+                      className="btn btn-outline-danger nav-link px-4 px-md-3"
                       onClick={() => navigate('/recientes')}
                     >
                       Ordenes
                     </button>
-                </li>
-
-                <li className="nav-item">
-                  <button
-                    className="btn btn-outline-danger nav-link px-4 px-md-2"
-                    onClick={() => navigate('/search')}
-                  >
-                    Buscar
-                  </button>
-                </li>
-                <li className="nav-item">
-                  <button
-                    className="btn btn-outline-danger nav-link px-4 px-md-2"
-                    onClick={() => navigate('/perfil')}
-                  >
-                    Perfil
-                  </button>
-                </li>
-                <li className="nav-item">
-                  {userStore.admin && (
+                  </li>
+                  <li className="nav-item">
                     <button
-                      className="btn btn-outline-danger nav-link px-4 px-md-2"
+                      className="btn btn-outline-danger nav-link px-4 px-md-3"
+                      onClick={() => navigate('/historial')}
+                    >
+                      Historial
+                    </button>
+                  </li>
+                  <li className="nav-item">
+                    <button
+                      className="btn btn-outline-danger nav-link px-4 px-md-3"
+                      onClick={() => navigate('/search')}
+                    >
+                      Buscar
+                    </button>
+                  </li>
+                  <li className="nav-item">
+                    <button
+                      className="btn btn-outline-danger nav-link px-4 px-md-3"
+                      onClick={() => navigate('/perfil')}
+                    >
+                      Perfil
+                    </button>
+                  </li>
+                  {/* <li className="nav-item">
+                    <button
+                      className="btn btn-outline-danger nav-link px-4 px-md-3"
                       onClick={addDish}
                     >
                       Añadir Plato
                     </button>
-                  )}
-                </li>
-                <li className="nav-item ">
-                  {userStore.admin && (
+                  </li> */}
+                  {/* <li className="nav-item">
                     <button
-                      className="btn btn-outline-danger nav-link px-4 px-md-2"
+                      className="btn btn-outline-danger nav-link px-4 px-md-3"
                       onClick={addRestaurant}
                     >
                       Añadir Restaurante
                     </button>
-                  )}
-                </li>
-              </ul>
+                  </li> */}
+                  <li className="nav-item">
+                    <button
+                      className="btn btn-outline-danger nav-link px-4 px-md-3"
+                      onClick={() => navigate('/admin/panel')}
+                    >
+                      Admin Panel
+                    </button>
+                  </li>
+                </ul>
+              ) : (
+                <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-4 justify-content-center justify-content-md-start">
+                  <li className="nav-item ms-md-4">
+                    <button
+                      className="btn btn-outline-danger nav-link px-4 px-md-3"
+                      onClick={() => navigate('/restaurantedelicias%20nayis')}
+                    >
+                      Productos
+                    </button>
+                  </li>
+                  <li className="nav-item">
+                    <button
+                      className="btn btn-outline-danger nav-link px-4 px-md-3"
+                      onClick={() => navigate('/recientes')}
+                    >
+                      Ordenes
+                    </button>
+                  </li>
+                  <li className="nav-item">
+                    <button
+                      className="btn btn-outline-danger nav-link px-4 px-md-3"
+                      onClick={() => navigate('/historial')}
+                    >
+                      Historial
+                    </button>
+                  </li>
+                  <li className="nav-item">
+                    <button
+                      className="btn btn-outline-danger nav-link px-4 px-md-3"
+                      onClick={() => navigate('/search')}
+                    >
+                      Buscar
+                    </button>
+                  </li>
+                  <li className="nav-item">
+                    <button
+                      className="btn btn-outline-danger nav-link px-4 px-md-3"
+                      onClick={() => navigate('/perfil')}
+                    >
+                      Perfil
+                    </button>
+                  </li>
+                </ul>
+              )}
             </div>
             <div className="col-2">
               <ul className="navbar-nav">
                 <li className="nav-item">
                   <button
-                    className="btn btn-sm btn-outline-danger nav-link col-12 "
+                    className="btn btn-sm btn-outline-danger nav-link col-12"
                     onClick={LogOutUser}
                   >
                     <img width="22px" src={logout} alt="Logout" />

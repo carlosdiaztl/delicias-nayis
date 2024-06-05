@@ -17,7 +17,7 @@ import NavBar from '../navbar/NavBar';
 import TimestampTable from '../../services/ConverTime';
 import NewFooter from '../home/footer/NewFooter';
 
-const Recientes = () => {
+const HistorialPedidos = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userStore = useSelector((store) => store.userStore);
@@ -129,65 +129,37 @@ const Recientes = () => {
     <>
       <NavBar />
       <div style={{ minHeight: '35vh' }} className="container">
-        {comprasStore && comprasStore.length  ? (
-          <div className="recientes container p-1 m-2">
-            <h3>Recientes</h3>
-            <button className="btn btn-outline-danger mx-2" onClick={deleteAll}>
-              Vaciar carrito
-            </button>
-            <button className="btn btn-outline-danger" onClick={confirmBuy}>
-              Confirmar compras
-            </button>
-            {comprasStore.length ? (
-              <div className="table-container">
-                <div className="table-responsive">
-                  <table className="table align-middle">
-                    <thead>
-                      <tr className="align-bottom">
-                        <th>Restaurante</th>
-                        <th>Plato</th>
-                        <th>Precio</th>
-                        <th>Cantidad</th>
-                        <th>Total</th>
-                        <th>Estado</th>
-                        <th>Acción</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {comprasStore.map((item, index) => (
-                        <tr key={index}>
-                          <td>{item.restaurante}</td>
-                          <td>{item.platoName}</td>
-                          <td>${item.price}</td>
-                          <td>{item.quantity}</td>
-                          <td>${item.total}</td>
-                          <td>
-                            <span onClick={() => deleteItem(index)}>
-                              {item.confirmacion ? 'Confirmado' : 'Pendiente'}
-                            </span>
-                          </td>
-                          <td>
-                            <button
-                              className="btn btn-outline-danger"
-                              onClick={() => deleteItem(index)}
-                            >
-                              Cancelar
-                            </button>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            ) : (
-              <h3>Tu lista está vacía, compra algo primero</h3>
-            )}
+        <h3 className='mt-4'>Historico compras</h3>
+        {userCompras.length && userCompras? (
+            <div className="table-responsive">
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>Restaurante</th>
+                  <th>Fecha</th>
+                  <th>Nombre del Plato</th>
+                  <th>Precio</th>
+                  <th>Cantidad</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                {userCompras.map((item, index) => (
+                  <tr className="comprasU" key={index}>
+                    <td>{item.restaurante}</td>
+                    <TimestampTable timestamp={item.timestamp} />
+                    <td>{item.platoName}</td>
+                    <td>${item.price}</td>
+                    <td>{item.quantity}</td>
+                    <td>${item.total}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-        ) : (
-          <h3>Tu lista está vacía, compra algo primero</h3>
-        )}
-      
+            
+        ):'No hay registro de compras'}
+        
       </div>
       
       <NewFooter />
@@ -195,4 +167,4 @@ const Recientes = () => {
   );
 };
 
-export default Recientes;
+export default HistorialPedidos;

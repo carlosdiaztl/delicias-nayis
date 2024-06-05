@@ -1,0 +1,8 @@
+.logo-responsive{
+    width: 130px;
+}
+@media screen and (min-width: 768px) {
+    .logo-responsive{
+        width: 180px;
+    }
+}

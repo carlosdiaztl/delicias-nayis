@@ -72,29 +72,45 @@ const CreateAccount = () => {
       {check ? (
         <></>
       ) : (
-        <div className="createAccount">
-          <h2>Create account </h2>
+        <div className="container d-flex flex-column justify-content-center">
+          <h2 className='h2 text-center'>Crear cuenta </h2>
 
           <form onSubmit={handleSubmit(onSubmit)}>
-            <input
+          <div className='form-group'>
+
+            <input className='form-control'
               type="text"
-              placeholder="name"
+              placeholder="Nombre"
               {...register('name', { required })}
             />
-            <input
+          </div>
+          <div className='form-group my-2'>
+
+            <input className='form-control'
               type="email"
               placeholder="email"
               {...register('email', { required })}
             />
-            <input
+          </div>
+          <div className='form-group mb-2'>
+
+            <input className='form-control'
               type="password"
-              placeholder="password"
+              placeholder="Contraseña"
               {...register('password', { required })}
             />
-            <button type="submit"> Sign in </button>
+          </div>
+          
+          <div className='form-group justify-content-center'>
+
+            <button className='col-md-4 btn btn-primary' type="submit"> Sign in </button>
+          </div>
           </form>
-          <span> {uid} </span>
-          <button onClick={LogOutUser}> Log Out</button>
+          {/* <span> {uid} </span> */}
+          <div className='form-group justify-content-center mt-2'>
+
+          <button className='col-md-4 btn btn-warning text-center' onClick={LogOutUser}> Log Out</button>
+          </div>
         </div>
       )}
     </>

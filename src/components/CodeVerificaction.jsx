@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { actionAuthenticationSync, actionSignPhoneAsync } from "../redux/actions/userActions";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase/firebaseconfig";
-import screen from "./../assets/Logo.png"
+import screen from "./../assets/logo3.png"
+
 const CodeVerificaction = () => {
   const dispatch = useDispatch();
   const navigate=useNavigate()
@@ -42,7 +43,7 @@ const CodeVerificaction = () => {
       
       <form>
         <label>
-          Login or create an account with your phone number to start ordering 
+        Inicie sesión o cree una cuenta con su número de teléfono para comenzar a realizar pedidos 
           <input
             type="number"
             onChange={validateCodigo}

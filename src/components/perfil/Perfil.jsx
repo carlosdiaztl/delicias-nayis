@@ -111,37 +111,8 @@ const Perfil = () => {
     <>
       <NavBar/>
 
-    <div className={userStore.admin ? 'perfil_admin' : 'perfil'}>
-      {userStore && userStore.admin ? (
-        <div>
-          <h3>
-           Usuarios
-          </h3>
-          {usuarios && usuarios.length ? (
-            <div className='table-responsive'>
-
-            <Table  striped bordered hover>
-              <thead>
-                <tr>
-                  <th>Nombre</th>
-                  <th>Email</th>
-                  <th>Dirección</th>
-                </tr>
-              </thead>
-              <tbody>
-                {usuarios.map((person, index) => (
-                  <tr key={index}>
-                    <td>{person.name ? person.name : ''}</td>
-                    <td>{person.email ? person.email : ''}</td>
-                    <td>{person.address ? person.address : ''}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </Table>
-            </div>
-          ) :''}
-        </div>
-      ) : (
+    <div className= 'perfil'>
+        
         <div className="d-flex align-items-center">
           <Card className="mb-4">
             <Card.Body>
@@ -194,7 +165,6 @@ const Perfil = () => {
             </Card.Body>
           </Card>
         </div>
-      )}
       {/* <Footer /> */}
     </div>
       <NewFooter />

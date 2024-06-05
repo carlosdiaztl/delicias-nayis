@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 import { loginProviderAsync } from '../redux/actions/userActions';
 import { useDispatch } from 'react-redux';
 import googleLogo from '../assets/gogle_logo.png';
-import screen from './../assets/Logo.png';
+import screen from './../assets/logo3.png';
 
 const SignIn = () => {
   const dispatch = useDispatch();
@@ -68,7 +68,7 @@ const SignIn = () => {
   return (
     <div className="signin">
       <img src={screen} />
-      <h2>SignIn </h2>
+      <h2>Iniciar sesión</h2>
       <form onSubmit={handleSubmit}>
         <label>
           Numero de telefono

@@ -6,13 +6,11 @@ import { Button, FloatingLabel, Form } from 'react-bootstrap';
 import { actionGetrestaurantesAsync } from '../../redux/actions/restaurantesActions';
 import { fileUpLoad } from '../../services/fileUpLoad';
 import { actionAddPlatoAsync } from '../../redux/actions/platosActions';
-import Footer from '../home/footer/Footer';
 import NavBar from '../navbar/NavBar';
-import NewFooter from '../home/footer/NewFooter';
 
 const category = [
   {
-    label: 'fast food',
+    label: 'favoritas',
     value: 1,
   },
   {
@@ -20,24 +18,28 @@ const category = [
     value: 2,
   },
   {
-    label: 'hamburguers',
+    label: 'hamburguesas',
     value: 3,
   },
   {
-    label: 'pasta',
+    label: 'picadas',
     value: 4,
   },
   {
-    label: 'mexican',
+    label: 'perros',
     value: 5,
   },
   {
-    label: 'salads',
+    label: 'ensaladas',
     value: 6,
   },
   {
-    label: 'vegetarian',
+    label: 'vegetariano',
     value: 7,
+  },
+  {
+    label: 'bebidas',
+    value: 8,
   },
 ];
 
@@ -88,7 +90,7 @@ const AddPlato = () => {
     dispatch(actionGetrestaurantesAsync());
   }, [dispatch]);
 
-  const restaurantesProperty = restaurantes.map((item, index) => item.name);
+  const restaurantesProperty = restaurantes;
   const {
     register,
     handleSubmit,
@@ -98,7 +100,7 @@ const AddPlato = () => {
   const onSubmit = async (data) => {
     const image = await fileUpLoad(data.image[0]);
     const newPlate = {
-      name: data.name,
+      name: data.name.trim(),
       category: data.category,
       description: data.description,
       price: Number(data.price),
@@ -120,9 +122,9 @@ const AddPlato = () => {
               <FloatingLabel key={index} label={item.label} className="mb-3">
                 <Form.Select
                   aria-label="Default select example"
-                  {...register(item.name, { required: true })}
+                  {...register(item.name, { required: 'Campo requerido' })}
                 >
-                  <option value="">Open this select menu</option>
+                  <option value="">Abrir menu de seleccion</option>
                   {category.map((item) => (
                     <option
                       key={item.value}
@@ -144,14 +146,14 @@ const AddPlato = () => {
                   aria-label="Default select example"
                   {...register(item.name, { required: true })}
                 >
-                  <option value="">Open this select menu</option>
+                  <option value="">Abrir menu de seleccion</option>
                   {restaurantesProperty.map((item, index) => (
                     <option
                       key={index}
-                      value={item}
+                      value={item.id}
                       className="text-capitalize"
                     >
-                      {item}
+                      {item.name}
                     </option>
                   ))}
                 </Form.Select>
@@ -176,9 +178,15 @@ const AddPlato = () => {
               <Form.Control
                 type={item.type}
                 size={item.type === 'file' ? 'sm' : ''}
-                {...register(item.name, { required: true })}
+                {...register(item.name, {
+                  required: 'Campo requerido',
+                  validate: (value) =>
+                    item.type === 'text' && value.trim().length === 0
+                      ? 'No puede estar vacío o solo contener espacios'
+                      : true,
+                })}
               />
-              <p>{errors[item.name]?.message}</p>
+              {errors[item.name] && <p>{errors[item.name].message}</p>}
             </FloatingLabel>
           );
         })}
@@ -187,7 +195,6 @@ const AddPlato = () => {
           Agregar plato
         </Button>
       </Form>
-      <NewFooter />
       {/* <Footer /> */}
     </div>
   );

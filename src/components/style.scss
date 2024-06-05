@@ -1,25 +1,4 @@
-.createAccount{  
-        form{ display: flex;  
-              flex-direction: column;
-              gap: 10px;
-              input{
-               
-                border: none;
-                border-bottom: 1px solid;
-              }
-              button{
-                position:absolute;
-                bottom: 1px;
-                width: 95%;
-                margin-left: 2.5%;
-                background-color: #ffe031;
-                border-radius: 10px;
-                height: 6.5%;
-                border: none;
-                
-              }
-    }
-}
+
 .signin{
   img{
     width: 30%;

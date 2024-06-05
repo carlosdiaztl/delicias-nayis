@@ -8,7 +8,6 @@ import { actionAddCompra } from '../../redux/actions/comprasActions';
 import { actionGetPlatosAsync } from '../../redux/actions/platosActions';
 import { Card, Button } from 'react-bootstrap';
 import './stylePlato.scss';
-import Footer from '../home/footer/Footer';
 import NavBar from '../navbar/NavBar';
 import NewFooter from '../home/footer/NewFooter';
 
@@ -19,6 +18,7 @@ const Plato = () => {
   const { platos } = useSelector((state) => state.platosStore);
   const { name } = useParams();
   const platoSelect = platos.find((plato) => plato.name === name);
+  console.log(platoSelect);
 
   useEffect(() => {
     dispatch(actionGetPlatosAsync());
@@ -34,10 +34,6 @@ const Plato = () => {
     return () => unsubscribe();
   }, [navigate]);
 
-  const goBack = () => {
-    navigate(`/restaurante${platoSelect?.property}`);
-  };
-
   const changeQuantity = (action) => {
     if (action === 'decrease') {
       setQuantity((prevQuantity) => (prevQuantity > 1 ? prevQuantity - 1 : prevQuantity));
@@ -49,7 +45,7 @@ const Plato = () => {
   const agregarCompra = () => {
     const total = platoSelect?.price * quantity;
     const newBuy = {
-      restaurante: platoSelect?.property,
+      restaurante:'Delicias Nayis',
       platoName: platoSelect?.name,
       price: platoSelect?.price,
       quantity,
@@ -62,33 +58,37 @@ const Plato = () => {
 
   return (
     <>
-        <NavBar />
+      <NavBar />
       {platoSelect && (
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-md-8">
-              <Card>
-                <Card.Header>
-                  <Button className='text-left col-md-8 col-12' variant="link"  onClick={goBack}>&lt;Regresar</Button>
-                </Card.Header>
-                <Card.Body>
+              <Card className='border-none border-0 border-radius-0'>
+                <Card.Header className='border-none border-0 border-radius-0'>
                   <Card.Title>{platoSelect.name}</Card.Title>
-                  <Card.Text>
-                    <img
-                      src={platoSelect.image}
-                      alt={platoSelect.name}
-                      className="img-fluid"
-                      style={{ maxWidth: '100%', height: 'auto' }}
-                    />
-                    <p>Precio: ${platoSelect.price}</p>
-                  </Card.Text>
+                </Card.Header>
+                <Card.Body className='border-none border-0 border-radius-0'>
+                  <div className="row">
+                    <div className="col-md-6">
+                      <img
+                        src={platoSelect.image}
+                        alt={platoSelect.name}
+                        className="img-fluid"
+                        style={{ maxWidth: '100%', height: 'auto' }}
+                      />
+                    </div>
+                    <div className="col-md-6">
+                      <p>Precio: ${platoSelect.price}</p>
+                      <p>Descripción: {platoSelect.description}</p>
+                    </div>
+                  </div>
                 </Card.Body>
-                <Card.Footer>
-                  <div className="my-4 col-md-12 row">
-                  <aside className="compraButtons col-md-6 d-flex justify-content-center gap-2 align-items-center" >
-                      <Button variant="outline-secondary" onClick={() => changeQuantity('decrease')}>-</Button>
+                <Card.Footer className='border-none border-0 border-radius-0'>
+                  <div className="my-4 row">
+                    <aside className="compraButtons col-md-6 d-flex justify-content-center gap-2 align-items-center">
+                      <Button variant="outline-secondary mx-2" onClick={() => changeQuantity('decrease')}>-</Button>
                       <span className='text-center'>{quantity}</span>
-                      <Button variant="outline-secondary" onClick={() => changeQuantity('increase')}>+</Button>
+                      <Button variant="outline-secondary mx-2" onClick={() => changeQuantity('increase')}>+</Button>
                     </aside>
                     <Button className='mt-4 col-md-6' variant="primary" onClick={agregarCompra}>
                       <span>Añadir </span>
@@ -99,10 +99,9 @@ const Plato = () => {
               </Card>
             </div>
           </div>
-          {/* <Footer /> */}
         </div>
       )}
-          <NewFooter />
+      <NewFooter />
     </>
   );
 };

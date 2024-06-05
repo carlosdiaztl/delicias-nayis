@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Carousel from 'react-bootstrap/Carousel';
-import promo2 from "../../../assets/hamburguesaespecial.jpg";
-import promo4 from "../../../assets/restaurante2.jpg";
+import promo2 from "../../../assets/carousel4.png";
+import promo4 from "../../../assets/carousel5.png";
 import promo5 from "../../../assets/restaurante1.jpg";
 import "./style.scss";
 
@@ -36,7 +36,7 @@ const Dashboard = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setCarrusel((carrusel + 1) % images.length); 
-    }, 3000);
+    }, 3400);
 
     return () => clearTimeout(timer);
   }, [carrusel]);
@@ -45,7 +45,7 @@ const Dashboard = () => {
 
   return (
     <Carousel
-      interval={2000} // Cambiar imagen cada 2 segundos
+      interval={3000} // Cambiar imagen cada 2 segundos
       activeIndex={carrusel}
       onSelect={(selectedIndex) => setCarrusel(selectedIndex)}
       className="dashboard-carousel"

@@ -11,13 +11,11 @@ import {
   agregarComprasAsync,
 } from '../../redux/actions/comprasActions';
 import { actionGetPlatosAsync } from '../../redux/actions/platosActions';
-import Footer from '../home/footer/Footer';
 import './style.scss';
 import NavBar from '../navbar/NavBar';
 import TimestampTable from '../../services/ConverTime';
-import NewFooter from '../home/footer/NewFooter';
 
-const Recientes = () => {
+const Orders = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userStore = useSelector((store) => store.userStore);
@@ -106,93 +104,50 @@ const Recientes = () => {
     }
   };
 
-  const confirmBuy = () => {
-    console.log(comprasStore);
-    console.log(userStore);
-    const userId = userStore.uid; // Obtener el ID del usuario desde el store
-
-    // Modificar cada compra para agregar el ID del usuario
-    const comprasConUserId = comprasStore.map((compra) => ({
-      ...compra,
-      userId: userId,
-      userName: userStore.name,
-      timestamp: new Date(),
-    }));
-
-    dispatch(agregarComprasAsync(comprasConUserId));
-    sendWpp()
-    Swal.fire('Sus compras han sido recibidas', '', 'success');
-    deleteAll();
-  };
 
   return (
     <>
       <NavBar />
       <div style={{ minHeight: '35vh' }} className="container">
-        {comprasStore && comprasStore.length  ? (
-          <div className="recientes container p-1 m-2">
-            <h3>Recientes</h3>
-            <button className="btn btn-outline-danger mx-2" onClick={deleteAll}>
-              Vaciar carrito
-            </button>
-            <button className="btn btn-outline-danger" onClick={confirmBuy}>
-              Confirmar compras
-            </button>
-            {comprasStore.length ? (
-              <div className="table-container">
-                <div className="table-responsive">
-                  <table className="table align-middle">
-                    <thead>
-                      <tr className="align-bottom">
-                        <th>Restaurante</th>
-                        <th>Plato</th>
-                        <th>Precio</th>
-                        <th>Cantidad</th>
-                        <th>Total</th>
-                        <th>Estado</th>
-                        <th>Acción</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {comprasStore.map((item, index) => (
-                        <tr key={index}>
-                          <td>{item.restaurante}</td>
-                          <td>{item.platoName}</td>
-                          <td>${item.price}</td>
-                          <td>{item.quantity}</td>
-                          <td>${item.total}</td>
-                          <td>
-                            <span onClick={() => deleteItem(index)}>
-                              {item.confirmacion ? 'Confirmado' : 'Pendiente'}
-                            </span>
-                          </td>
-                          <td>
-                            <button
-                              className="btn btn-outline-danger"
-                              onClick={() => deleteItem(index)}
-                            >
-                              Cancelar
-                            </button>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            ) : (
-              <h3>Tu lista está vacía, compra algo primero</h3>
-            )}
+          <div className="col-12 d-flex justify-content-end">
+            <span className="pull-right text-right ">
+              Ver historial de Pedidos
+            </span>
           </div>
-        ) : (
-          <h3>Tu lista está vacía, compra algo primero</h3>
-        )}
-      
+ 
+          <div className="table-responsive">
+            <table className="table align-middle">
+              <thead>
+                <tr>
+                  <th>Restaurante</th>
+                  <th>Fecha</th>
+                  <th>Nombre del Plato</th>
+                  <th>Precio</th>
+                  <th>Cantidad</th>
+                  <th>Total</th>
+                  <th className="text-center">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                {compras.map((item, index) => (
+                  <tr className="comprasU" key={index}>
+                    <td>{item.restaurante}</td>
+                    <TimestampTable timestamp={item.timestamp} />
+                    <td>{item.platoName}</td>
+                    <td>${item.price}</td>
+                    <td>{item.quantity}</td>
+                    <td>${item.total}</td>
+                    <td className="text-center">
+                      <button className="btn btn-danger">Eliminar</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
       </div>
-      
-      <NewFooter />
     </>
   );
 };
 
-export default Recientes;
+export default Orders;
