@@ -27,6 +27,8 @@ import ProductsAdmin from '../components/home/Admin/ProductsAdmin';
 import Orders from '../components/recientes/Orders';
 import ListaClientes from '../components/perfil/ListaClientes';
 import HistorialPedidos from '../components/recientes/HistorialPedidos';
+import AdminPanel from '../components/home/Admin/ProductsAdmin';
+import AdminProducts from '../components/restaurantes/AdminProducts';
 
 const Router = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(undefined);
@@ -114,9 +116,11 @@ const Router = () => {
           }
         >
           {/* Rutas específicas para administradores */}
-          <Route path="/admin/panel" element={<ProductsAdmin />} />
+          <Route path="/admin/panel" element={<AdminPanel/>} />
           <Route path="/admin/ordenes" element={<Orders />} />
           <Route path="/admin/clientes" element={<ListaClientes />} />
+          <Route path="/admin/productos" element={<AdminProducts />} />
+          
           {/* <Route path="/admin/anotherAdminRoute" element={<AnotherAdminComponent />} /> */}
         </Route>
       </Routes>

@@ -15,7 +15,14 @@ const Restaurantes = () => {
   const navigate = useNavigate();
   const { name } = useParams();
   const { platos } = useSelector((state) => state.platosStore);
+  useEffect(() => {
+    const originalBackgroundColor = document.getElementById('root').style.backgroundColor;
+    document.getElementById('root').style.backgroundColor = '#ff900029';
 
+    return () => {
+      document.getElementById('root').style.backgroundColor = originalBackgroundColor;
+    };
+  }, []);
   useEffect(() => {
     dispatch(actionGetPlatosAsync());
     dispatch(actionGetrestaurantesAsync());
@@ -77,16 +84,16 @@ const Restaurantes = () => {
             <button
               type="button"
               className="btn btn-light"
-              onClick={() => setFilter('bebidas')}
+              onClick={() => setFilter('comidas')}
             >
-              Bebidas
+              Comidas
             </button>
             <button
               type="button"
               className="btn btn-light"
-              onClick={() => setFilter('favoritas')}
+              onClick={() => setFilter('bebidas')}
             >
-              Favoritas
+              Bebidas
             </button>
           </div>
 
@@ -101,11 +108,11 @@ const Restaurantes = () => {
                 onClick={() => goProduct(plate.name)}
               >
                 <img src={plate.image} alt={plate.name} className="img-fluid" />
-                <p>
-                  <strong className="text-dark">{plate.name}</strong>{' '}
+                <p className='text-center'>
+                  <strong className="text-dark text-center">{plate.name}</strong>{' '}
                 </p>
                 {/* <p className='text-secondary'>{plate.description}</p> */}
-                <p className="text-danger">${plate.price}</p>
+                <p className="text-danger text-center">${plate.price}</p>
               </div>
             ))}
           </div>

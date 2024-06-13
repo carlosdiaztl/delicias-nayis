@@ -111,7 +111,7 @@ const Perfil = () => {
     <>
       <NavBar/>
 
-    <div className= 'perfil'>
+    <div className= 'd-flex flex-column justify-content-center align-items-center'>
         
         <div className="d-flex align-items-center">
           <Card className="mb-4">

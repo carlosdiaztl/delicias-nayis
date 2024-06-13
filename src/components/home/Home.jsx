@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import { actionGetPlatosAsync } from '../../redux/actions/platosActions';
 import NavBar from '../navbar/NavBar';
 import './style.scss';
-import about_img from './../../assets/aquitania1.jpg';
+import about_img from './../../assets/aquitania2.jpg';
 import NewFooter from './footer/NewFooter';
 const Home = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -98,7 +98,7 @@ const Home = () => {
                 </div>
                 <div className="col-md-6">
                   <div className="image_iman">
-                    <img src={about_img} className="about_img" />
+                    <img  src={about_img} className="about_img" />
                   </div>
                 </div>
               </div>
@@ -267,12 +267,12 @@ const Home = () => {
         </div>
       </div> */}
       <div className="map_main">
-      <div className="map-responsive">
+      <div className="map-responsive d-flex justify-content-center">
         <iframe
           src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Boyaca+aquitania"
           width="220"
           height="400"
-          style={{ border: 0, width: '100%' }}
+          style={{ border: 0, width: '50%' }}
           allowFullScreen
         ></iframe>
       </div>

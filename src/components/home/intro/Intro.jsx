@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './style.scss'
 
-import screen from "../../../assets/screen.png"
+import screen from "../../../assets/logo3.png"
 import { auth } from '../../../firebase/firebaseconfig'
 import { onAuthStateChanged } from 'firebase/auth'
 const Intro = () => {

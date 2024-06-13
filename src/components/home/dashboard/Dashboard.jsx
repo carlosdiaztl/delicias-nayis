@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Carousel from 'react-bootstrap/Carousel';
-import promo2 from "../../../assets/carousel4.png";
+import promo2 from "../../../assets/carousel7.png";
 import promo4 from "../../../assets/carousel5.png";
-import promo5 from "../../../assets/restaurante1.jpg";
+import promo5 from "../../../assets/carousel6.png";
 import "./style.scss";
 
 const Dashboard = () => {

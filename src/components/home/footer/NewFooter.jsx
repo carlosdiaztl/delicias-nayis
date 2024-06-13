@@ -4,7 +4,7 @@ import './style.scss';
 
 const NewFooter = () => {
   return (
-    <div className="col-12 mt-4">
+    <div className="col-12 pt-4">
       <img
         className="wppImg"
         onClick={() =>
@@ -131,7 +131,7 @@ const NewFooter = () => {
           <div className="row">
             <div className="col-sm-12">
               <p className="copyright_text">
-                ©️ 2017 Todos los Derechos Reservados | <a href="">Aquitania</a>
+                ©️ 2024 Todos los Derechos Reservados | <a href="">Aquitania</a>
               </p>
               {/* <p className="copyright_text"> ©️ 2017 Todos los Derechos Reservados | <a href="">Aquitania</a> <a href="#"></a> */}
             </div>

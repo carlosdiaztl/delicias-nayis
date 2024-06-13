@@ -18,10 +18,7 @@ import TimestampTable from '../../services/ConverTime';
 const Orders = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const userStore = useSelector((store) => store.userStore);
-  const comprasStore = useSelector((store) => store.comprasStore);
   const [compras, setCompras] = useState([]);
-  const [userCompras, setUserCompras] = useState([]);
 
   useEffect(() => {
     dispatch(actionGetPlatosAsync());
@@ -51,17 +48,30 @@ const Orders = () => {
       });
     });
     // userCompras.length
-    setCompras(comprasTotales);
-    console.log(comprasTotales);
+    const comprasOrdenadas = comprasTotales.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+    
+    setCompras(comprasOrdenadas);
+    console.log(comprasOrdenadas);
   };
   const eliminarCompra = async (id) => {
-    try {
-      await deleteDoc(doc(dataBase, 'compras', id));
-      Swal.fire('Eliminado', 'La compra ha sido eliminada con éxito', 'success');
-      // Actualizar la lista de compras después de eliminar
-      setCompras((prevCompras) => prevCompras.filter((compra) => compra.id !== id));
-    } catch (error) {
-      Swal.fire('Error', 'Hubo un error al eliminar la compra', 'error');
+    const result = await Swal.fire({
+      title: 'Estas seguro?',
+      text: "Esta accion no puede ser revertida!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, borrala!'
+    });
+
+    if (result.isConfirmed) {
+      try {
+        await deleteDoc(doc(dataBase, 'compras', id));
+        setCompras((prevCompras) => prevCompras.filter((compra) => compra.id !== id));
+        Swal.fire('Deleted!', 'Orden eliminada.', 'success');
+      } catch (error) {
+        Swal.fire('Error', 'Hubo un error al eliminar la compra', 'error');
+      }
     }
   };
 

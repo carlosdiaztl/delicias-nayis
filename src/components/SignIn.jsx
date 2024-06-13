@@ -82,13 +82,13 @@ const SignIn = () => {
           />
         </label>
         <div id="recaptch-container"> </div>
-        <img
+        <img className='my-3'
           src={googleLogo}
           alt="Google"
           style={{ width: 50, marginLeft: 30 }}
           onClick={handleLoginGoogle}
         />
-        <button type="submit">Logueate</button>
+        <button className='mt-4' type="submit">Logueate</button>
       </form>
     </div>
   );

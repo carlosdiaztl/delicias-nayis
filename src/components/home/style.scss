@@ -188,7 +188,7 @@ button {
 }
 
 .layout_padding {
-    padding-top: 100px;
+    padding-top: 30px;
     padding-bottom: 0px;
 }
 
@@ -423,9 +423,10 @@ button {
 }
 
 .about_img {
+    max-height: 400px;
     width: 100%;
+    object-fit: contain;
 }
-
 .about_taital_1 {
     width: 100%;
     float: left;

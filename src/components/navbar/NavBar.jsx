@@ -48,7 +48,7 @@ const NavBar = () => {
                 <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-4 justify-content-center justify-content-md-start">
                   <li className="nav-item ms-md-4">
                     <button
-                      className="btn btn-outline-danger nav-link px-4 px-md-3"
+                      className="btn btn-outline-danger nav-link px-4 px-md-3 py-md-3"
                       onClick={() => navigate('/restaurantedelicias%20nayis')}
                     >
                       Productos
@@ -56,7 +56,7 @@ const NavBar = () => {
                   </li>
                   <li className="nav-item">
                     <button
-                      className="btn btn-outline-danger nav-link px-4 px-md-3"
+                      className="btn btn-outline-danger nav-link px-4 px-md-3 py-md-3 "
                       onClick={() => navigate('/recientes')}
                     >
                       Ordenes
@@ -64,7 +64,7 @@ const NavBar = () => {
                   </li>
                   <li className="nav-item">
                     <button
-                      className="btn btn-outline-danger nav-link px-4 px-md-3"
+                      className="btn btn-outline-danger nav-link px-4 px-md-3 py-md-3"
                       onClick={() => navigate('/historial')}
                     >
                       Historial
@@ -72,7 +72,7 @@ const NavBar = () => {
                   </li>
                   <li className="nav-item">
                     <button
-                      className="btn btn-outline-danger nav-link px-4 px-md-3"
+                      className="btn btn-outline-danger nav-link px-4 px-md-3 py-md-3"
                       onClick={() => navigate('/search')}
                     >
                       Buscar
@@ -80,7 +80,7 @@ const NavBar = () => {
                   </li>
                   <li className="nav-item">
                     <button
-                      className="btn btn-outline-danger nav-link px-4 px-md-3"
+                      className="btn btn-outline-danger nav-link px-4 px-md-3 py-md-3"
                       onClick={() => navigate('/perfil')}
                     >
                       Perfil
@@ -88,7 +88,7 @@ const NavBar = () => {
                   </li>
                   {/* <li className="nav-item">
                     <button
-                      className="btn btn-outline-danger nav-link px-4 px-md-3"
+                      className="btn btn-outline-danger nav-link px-4 px-md-3 py-md-3"
                       onClick={addDish}
                     >
                       Añadir Plato
@@ -96,7 +96,7 @@ const NavBar = () => {
                   </li> */}
                   {/* <li className="nav-item">
                     <button
-                      className="btn btn-outline-danger nav-link px-4 px-md-3"
+                      className="btn btn-outline-danger nav-link px-4 px-md-3 py-md-3"
                       onClick={addRestaurant}
                     >
                       Añadir Restaurante
@@ -104,7 +104,7 @@ const NavBar = () => {
                   </li> */}
                   <li className="nav-item">
                     <button
-                      className="btn btn-outline-danger nav-link px-4 px-md-3"
+                      className="btn btn-outline-danger nav-link px-4 px-md-3 py-md-3"
                       onClick={() => navigate('/admin/panel')}
                     >
                       Admin Panel
@@ -115,7 +115,7 @@ const NavBar = () => {
                 <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-4 justify-content-center justify-content-md-start">
                   <li className="nav-item ms-md-4">
                     <button
-                      className="btn btn-outline-danger nav-link px-4 px-md-3"
+                      className="btn btn-outline-danger nav-link px-4 px-md-3 py-md-3"
                       onClick={() => navigate('/restaurantedelicias%20nayis')}
                     >
                       Productos
@@ -123,7 +123,7 @@ const NavBar = () => {
                   </li>
                   <li className="nav-item">
                     <button
-                      className="btn btn-outline-danger nav-link px-4 px-md-3"
+                      className="btn btn-outline-danger nav-link px-4 px-md-3 py-md-3"
                       onClick={() => navigate('/recientes')}
                     >
                       Ordenes
@@ -131,7 +131,7 @@ const NavBar = () => {
                   </li>
                   <li className="nav-item">
                     <button
-                      className="btn btn-outline-danger nav-link px-4 px-md-3"
+                      className="btn btn-outline-danger nav-link px-4 px-md-3 py-md-3"
                       onClick={() => navigate('/historial')}
                     >
                       Historial
@@ -139,7 +139,7 @@ const NavBar = () => {
                   </li>
                   <li className="nav-item">
                     <button
-                      className="btn btn-outline-danger nav-link px-4 px-md-3"
+                      className="btn btn-outline-danger nav-link px-4 px-md-3 py-md-3"
                       onClick={() => navigate('/search')}
                     >
                       Buscar
@@ -147,7 +147,7 @@ const NavBar = () => {
                   </li>
                   <li className="nav-item">
                     <button
-                      className="btn btn-outline-danger nav-link px-4 px-md-3"
+                      className="btn btn-outline-danger nav-link px-4 px-md-3 py-md-3"
                       onClick={() => navigate('/perfil')}
                     >
                       Perfil

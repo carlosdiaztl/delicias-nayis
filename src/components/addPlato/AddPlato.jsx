@@ -10,7 +10,7 @@ import NavBar from '../navbar/NavBar';
 
 const category = [
   {
-    label: 'favoritas',
+    label: 'comidas',
     value: 1,
   },
   {
@@ -114,7 +114,7 @@ const AddPlato = () => {
   return (
     <div className="p-5">
       <NavBar />
-      <h1>Agregar nuevo plato</h1>
+      <h1>Agregar nuevo producto</h1>
       <Form onSubmit={handleSubmit(onSubmit)}>
         {inputList.map((item, index) => {
           if (item.type === 'select') {
