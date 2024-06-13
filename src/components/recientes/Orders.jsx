@@ -48,7 +48,7 @@ const Orders = () => {
       });
     });
     // userCompras.length
-    const comprasOrdenadas = comprasTotales.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+    const comprasOrdenadas = comprasTotales.sort((a, b) => b.timestamp.toMillis() - a.timestamp.toMillis());
     
     setCompras(comprasOrdenadas);
     console.log(comprasOrdenadas);
