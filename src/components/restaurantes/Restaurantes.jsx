@@ -16,14 +16,6 @@ const Restaurantes = () => {
   const { name } = useParams();
   const { platos } = useSelector((state) => state.platosStore);
   useEffect(() => {
-    const originalBackgroundColor = document.getElementById('root').style.backgroundColor;
-    document.getElementById('root').style.backgroundColor = '#ff900029';
-
-    return () => {
-      document.getElementById('root').style.backgroundColor = originalBackgroundColor;
-    };
-  }, []);
-  useEffect(() => {
     dispatch(actionGetPlatosAsync());
     dispatch(actionGetrestaurantesAsync());
   }, [dispatch]);

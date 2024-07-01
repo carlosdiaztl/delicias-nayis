@@ -8,7 +8,7 @@ import { onAuthStateChanged } from 'firebase/auth'
 const Intro = () => {
     const navigate=useNavigate()
     const goCarousel=()=>{
-        navigate('/intro')
+        navigate('/signIn')
 
     }
    useEffect(() => {

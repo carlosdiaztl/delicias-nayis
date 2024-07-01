@@ -75,9 +75,9 @@ const Home = () => {
       <div className="main p-1">
         <section className="main_dashboard">{/* <Dashboardtwo /> */}</section>
         <div className="about_section layout_padding">
-          <div className="container">
+          <div className="container" >
             <div className="about_section_2">
-              <div className="row">
+              <div className="row" >
                 <div className="col-md-6">
                   <div className="about_taital_box">
                     <h1 className="about_taital">Sobre nuestra tienda</h1>
