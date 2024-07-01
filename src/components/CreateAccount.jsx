@@ -94,22 +94,17 @@ const CreateAccount = () => {
           </div>
           <div className='form-group mb-2'>
 
-            <input className='form-control'
-              type="password"
-              placeholder="Contraseña"
-              {...register('password', { required })}
-            />
           </div>
           
           <div className='form-group justify-content-center'>
 
-            <button className='col-md-4 btn btn-primary' type="submit"> Sign in </button>
+            <button className='col-md-4 btn btn-primary' type="submit"> Registrate </button>
           </div>
           </form>
           {/* <span> {uid} </span> */}
           <div className='form-group justify-content-center mt-2'>
 
-          <button className='col-md-4 btn btn-warning text-center' onClick={LogOutUser}> Log Out</button>
+          <button className='col-md-4 btn btn-warning text-center' onClick={LogOutUser}> Salir</button>
           </div>
         </div>
       )}

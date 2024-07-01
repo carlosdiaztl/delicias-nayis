@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import './style.scss'
 
 import screen from "../../../assets/logo3.png"
-import { auth } from '../../../firebase/firebaseconfig'
-import { onAuthStateChanged } from 'firebase/auth'
 const Intro = () => {
     const navigate=useNavigate()
     const goCarousel=()=>{

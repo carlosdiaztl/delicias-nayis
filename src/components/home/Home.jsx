@@ -85,7 +85,9 @@ const Home = () => {
                       Venta de comidas rapidas{' '}
                     </h1>
                     <p className=" about_text">
-                      Mas informacion de la aplicacion Esta aplicacion se creo
+                    <h3 >Mas informacion de la aplicacion  </h3>
+                      
+                      Esta aplicacion se creo
                       con el fin de facilitar la entrega de los pedidos de
                       comidas rapidas para asi disminuir el tiempo de espera
                       para los clientes y esto permite que el pedido sea

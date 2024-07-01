@@ -40,7 +40,7 @@ const SignIn = () => {
       .catch((error) => {
         console.log(error);
         Swal.fire('Upps ', 'intenta de nuevo  ', 'error');
-        navigate('/intro');
+        navigate('/signIn');
       });
   };
   const generateReCaptcha = () => {
