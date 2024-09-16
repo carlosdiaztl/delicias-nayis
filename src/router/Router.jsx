@@ -31,8 +31,8 @@ import AdminPanel from '../components/home/Admin/ProductsAdmin';
 import AdminProducts from '../components/restaurantes/AdminProducts';
 
 const Router = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(undefined);
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAdmin, setIsAdmin] = useState("false");
   const [loading, setLoading] = useState(true);
   const userStore = useSelector((store) => store.userStore);
   const dispatch = useDispatch();
@@ -90,24 +90,24 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<PublicRouter isAuthentication={isLoggedIn} />}>
+        <Route element={<PublicRouter  />}>
           <Route path="/" element={<Intro />} />
           <Route path="/intro" element={<Carousel />} />
           <Route path="/signIn" element={<SignIn />} />
           <Route path="/verification" element={<CodeVerificaction />} />
+          <Route path="/restaurante:name" element={<Restaurantes />} />
+          <Route path="/plato:name" element={<Plato />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/search" element={<Search />} />
         </Route>
 
         <Route element={<PrivateRouter isAuthentication={isLoggedIn} />}>
           <Route path="/createaccount/:uid" element={<CreateAccount />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/search" element={<Search />} />
           <Route path="/recientes" element={<Recientes />} />
           <Route path="/historial" element={<HistorialPedidos />} />
           <Route path="/perfil" element={<Perfil />} />
           <Route path="/addRestaurant" element={<AddRestaurant />} />
-          <Route path="/restaurante:name" element={<Restaurantes />} />
           <Route path="/addPlato" element={<AddPlato />} />
-          <Route path="/plato:name" element={<Plato />} />
         </Route>
 
         <Route

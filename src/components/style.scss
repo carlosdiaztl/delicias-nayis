@@ -14,16 +14,23 @@
       display: flex;
       flex-direction: column;
       input{
-        width: 90vw;
+        width: 50vw;
         border: none;
         border-bottom: solid 2px;
         border-color: #ffe031;
       }
+      
     }
     button{
       width: 90%;
       height: 40px;
       background-color: #ffe031;
+    }
+    .logueate{
+      width: 20vw;
+      border: none;
+      border-bottom: solid 2px;
+      border-color: #ffe031;
     }
   }
 

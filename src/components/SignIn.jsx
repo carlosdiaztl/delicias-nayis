@@ -1,5 +1,5 @@
-import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
-import React, { useState } from 'react';
+import { onAuthStateChanged, RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../firebase/firebaseconfig';
 import Swal from 'sweetalert2';
@@ -12,6 +12,13 @@ const SignIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [phoneNumber, setPhoneNumber] = useState('');
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user?.displayName) {
+        navigate(`/home`);
+      }
+    });
+  }, []);
   const validatePhoneNumber = (numberPhone, lengthString) => {
     if (!numberPhone) {
       return false;
@@ -88,7 +95,7 @@ const SignIn = () => {
           style={{ width: 50, marginLeft: 30 }}
           onClick={handleLoginGoogle}
         />
-        <button className='mt-4' type="submit">Logueate</button>
+        <button className='logueate mt-4' type="submit">Logueate</button>
       </form>
     </div>
   );

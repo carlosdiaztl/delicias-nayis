@@ -2,7 +2,7 @@ import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 import propTypes from 'prop-types';
 const PrivateRouter = ({ isAuthentication }) => {
-  return <div>{isAuthentication ? <Outlet /> : <Navigate to="/" />}</div>;
+  return <div>{isAuthentication ? <Outlet /> : <Navigate to="/signIn" />}</div>;
 };
 PrivateRouter.propTypes = { isAuthentication: propTypes.bool };
 export default PrivateRouter;

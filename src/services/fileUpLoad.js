@@ -1,7 +1,7 @@
 export const fileUpLoad = async (file) => {
-  const cloudName = "dzjytwhrg";
+  const cloudName = "dwcviidky";
   //"dzjytwhrg"
-  const uploadPreset = "crud-ompleto";
+  const uploadPreset = "dwcviidky";
 
   const urlCloudinary = `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`;
 

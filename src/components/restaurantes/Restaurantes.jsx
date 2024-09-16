@@ -20,20 +20,20 @@ const Restaurantes = () => {
     dispatch(actionGetrestaurantesAsync());
   }, [dispatch]);
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user && user.displayName) {
-        console.log(user.displayName);
-      } else {
-        navigate(`/createaccount/${user?.uid}`);
-        console.log(user);
-      }
-    });
+  // useEffect(() => {
+  //   const unsubscribe = onAuthStateChanged(auth, (user) => {
+  //     if (user && user.displayName) {
+  //       console.log(user.displayName);
+  //     } else {
+  //       navigate(`/createaccount/${user?.uid}`);
+  //       console.log(user);
+  //     }
+  //   });
 
-    return () => {
-      unsubscribe();
-    };
-  }, [navigate]);
+  //   return () => {
+  //     unsubscribe();
+  //   };
+  // }, [navigate]);
 
   // const restaurante = restaurantes.find((restaurant) => restaurant.id === 'V8CvDhdeC8jAWXRLHyyU');
   const platosRestaurante = platos.filter(
@@ -100,11 +100,11 @@ const Restaurantes = () => {
                 onClick={() => goProduct(plate.name)}
               >
                 <img src={plate.image} alt={plate.name} className="img-fluid" />
-                <p className='text-center'>
-                  <strong className="text-dark text-center">{plate.name}</strong>{' '}
+                <p className='text-center m-0 p-0'>
+                  <strong className="text-dark text-center ">{plate.name}</strong>{' '}
                 </p>
                 {/* <p className='text-secondary'>{plate.description}</p> */}
-                <p className="text-danger text-center">${plate.price}</p>
+                <p className="text-danger text-center m-0 p-0 mb-3">${plate.price}</p>
               </div>
             ))}
           </div>

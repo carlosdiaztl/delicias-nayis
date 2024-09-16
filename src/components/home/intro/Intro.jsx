@@ -6,7 +6,7 @@ import screen from "../../../assets/logo3.png"
 const Intro = () => {
     const navigate=useNavigate()
     const goCarousel=()=>{
-        navigate('/signIn')
+        navigate('/home')
 
     }
    useEffect(() => {

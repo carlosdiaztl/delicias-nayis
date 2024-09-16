@@ -24,15 +24,15 @@ const Plato = () => {
     dispatch(actionGetPlatosAsync());
   }, [dispatch]);
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (!user?.displayName) {
-        navigate(`/createaccount/${user?.uid}`);
-      }
-    });
+  // useEffect(() => {
+  //   const unsubscribe = onAuthStateChanged(auth, (user) => {
+  //     if (!user?.displayName) {
+  //       navigate(`/createaccount/${user?.uid}`);
+  //     }
+  //   });
 
-    return () => unsubscribe();
-  }, [navigate]);
+  //   return () => unsubscribe();
+  // }, [navigate]);
 
   const changeQuantity = (action) => {
     if (action === 'decrease') {
@@ -42,19 +42,34 @@ const Plato = () => {
     }
   };
 
-  const agregarCompra = () => {
-    const total = platoSelect?.price * quantity;
-    const newBuy = {
-      restaurante:'Delicias Nayis',
-      platoName: platoSelect?.name,
-      price: platoSelect?.price,
-      quantity,
-      total,
-      confirmacion: false,
-    };
-    dispatch(actionAddCompra(newBuy));
-    Swal.fire('Tu compra ha sido agregada con éxito', 'Que la disfrutes', 'success');
-  };
+
+const agregarCompra = () => {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const total = platoSelect?.price * quantity;
+      const newBuy = {
+        restaurante: 'Delicias Nayis',
+        platoName: platoSelect?.name,
+        price: platoSelect?.price,
+        quantity,
+        total,
+        confirmacion: false,
+      };
+      dispatch(actionAddCompra(newBuy));
+      Swal.fire('Tu compra ha sido agregada con éxito', 'Que la disfrutes', 'success');
+    } else {
+      Swal.fire({
+        title: 'No estás autenticado',
+        text: 'Por favor, inicia sesión para continuar',
+        icon: 'warning',
+        confirmButtonText: 'Iniciar sesión',
+      }).then(() => {
+        navigate('/signIn');
+      });
+    }
+  });
+};
+
 
   return (
     <>
@@ -74,7 +89,7 @@ const Plato = () => {
                         src={platoSelect.image}
                         alt={platoSelect.name}
                         className="img-fluid"
-                        style={{ maxWidth: '100%', height: 'auto' }}
+                        style={{ maxWidth: '60%', height: 'auto' }}
                       />
                     </div>
                     <div className="col-md-6">

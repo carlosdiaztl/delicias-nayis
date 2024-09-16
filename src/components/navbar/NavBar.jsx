@@ -20,12 +20,116 @@ const NavBar = () => {
     dispatch(actionUserLogOutAsync());
   };
 
-  // const addRestaurant = () => {
-  //   navigate('/addRestaurant');
-  // };
+  const renderNavItems = () => {
+    console.log(userStore);
 
-  const addDish = () => {
-    navigate('/addPlato');
+    if (userStore?.admin) {
+      // Opciones para admin
+      return (
+        <>
+          <li className="nav-item">
+            <button
+              className="btn btn-outline-danger"
+              onClick={() => navigate('/admin/panel')}
+            >
+              Admin Panel
+            </button>
+          </li>
+          <li className="nav-item">
+            <button
+              className="btn btn-outline-danger"
+              onClick={() => navigate('/restaurantedelicias%20nayis')}
+            >
+              Productos
+            </button>
+          </li>
+          <li className="nav-item">
+            <button
+              className="btn btn-outline-danger"
+              onClick={() => navigate('/recientes')}
+            >
+              Ordenes
+            </button>
+          </li>
+          <li className="nav-item">
+            <button
+              className="btn btn-outline-danger"
+              onClick={() => navigate('/historial')}
+            >
+              Historial
+            </button>
+          </li>
+          <li className="nav-item">
+            <button
+              className="btn btn-outline-danger"
+              onClick={() => navigate('/perfil')}
+            >
+              Perfil
+            </button>
+          </li>
+        </>
+      );
+    } else if (userStore && userStore?.uid) {
+      // Opciones para usuarios logueados
+      return (
+        <>
+          <li className="nav-item">
+            <button
+              className="btn btn-outline-danger"
+              onClick={() => navigate('/restaurantedelicias%20nayis')}
+            >
+              Productos
+            </button>
+          </li>
+          <li className="nav-item">
+            <button
+              className="btn btn-outline-danger"
+              onClick={() => navigate('/recientes')}
+            >
+              Ordenes
+            </button>
+          </li>
+          <li className="nav-item">
+            <button
+              className="btn btn-outline-danger"
+              onClick={() => navigate('/historial')}
+            >
+              Historial
+            </button>
+          </li>
+          <li className="nav-item">
+            <button
+              className="btn btn-outline-danger"
+              onClick={() => navigate('/perfil')}
+            >
+              Perfil
+            </button>
+          </li>
+        </>
+      );
+    } else {
+      // Opciones para usuarios no autenticados
+      return (
+        <>
+          <li className="nav-item">
+            <button
+              className="btn btn-outline-danger"
+              onClick={() => navigate('/restaurantedelicias%20nayis')}
+            >
+              Productos
+            </button>
+          </li>
+          <li className="nav-item">
+            <button
+              className="btn btn-outline-danger"
+              onClick={() => navigate('/search')}
+            >
+              Buscar
+            </button>
+          </li>
+        </>
+      );
+    }
   };
 
   return (
@@ -42,133 +146,28 @@ const NavBar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className={`collapse navbar-collapse ${isNavOpen ? 'show' : ''}`}>
-          <div className="row w-100 p-0 m-0">
-            <div className="col">
-              {userStore.admin ? (
-                <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-4 justify-content-center justify-content-md-start">
-                  <li className="nav-item ms-md-4">
-                    <button
-                      className="btn btn-outline-danger nav-link px-4 px-md-3 py-md-3"
-                      onClick={() => navigate('/restaurantedelicias%20nayis')}
-                    >
-                      Productos
-                    </button>
-                  </li>
-                  <li className="nav-item">
-                    <button
-                      className="btn btn-outline-danger nav-link px-4 px-md-3 py-md-3 "
-                      onClick={() => navigate('/recientes')}
-                    >
-                      Ordenes
-                    </button>
-                  </li>
-                  <li className="nav-item">
-                    <button
-                      className="btn btn-outline-danger nav-link px-4 px-md-3 py-md-3"
-                      onClick={() => navigate('/historial')}
-                    >
-                      Historial
-                    </button>
-                  </li>
-                  <li className="nav-item">
-                    <button
-                      className="btn btn-outline-danger nav-link px-4 px-md-3 py-md-3"
-                      onClick={() => navigate('/search')}
-                    >
-                      Buscar
-                    </button>
-                  </li>
-                  <li className="nav-item">
-                    <button
-                      className="btn btn-outline-danger nav-link px-4 px-md-3 py-md-3"
-                      onClick={() => navigate('/perfil')}
-                    >
-                      Perfil
-                    </button>
-                  </li>
-                  {/* <li className="nav-item">
-                    <button
-                      className="btn btn-outline-danger nav-link px-4 px-md-3 py-md-3"
-                      onClick={addDish}
-                    >
-                      Añadir Plato
-                    </button>
-                  </li> */}
-                  {/* <li className="nav-item">
-                    <button
-                      className="btn btn-outline-danger nav-link px-4 px-md-3 py-md-3"
-                      onClick={addRestaurant}
-                    >
-                      Añadir Restaurante
-                    </button>
-                  </li> */}
-                  <li className="nav-item">
-                    <button
-                      className="btn btn-outline-danger nav-link px-4 px-md-3 py-md-3"
-                      onClick={() => navigate('/admin/panel')}
-                    >
-                      Admin Panel
-                    </button>
-                  </li>
-                </ul>
-              ) : (
-                <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-4 justify-content-center justify-content-md-start">
-                  <li className="nav-item ms-md-4">
-                    <button
-                      className="btn btn-outline-danger nav-link px-4 px-md-3 py-md-3"
-                      onClick={() => navigate('/restaurantedelicias%20nayis')}
-                    >
-                      Productos
-                    </button>
-                  </li>
-                  <li className="nav-item">
-                    <button
-                      className="btn btn-outline-danger nav-link px-4 px-md-3 py-md-3"
-                      onClick={() => navigate('/recientes')}
-                    >
-                      Ordenes
-                    </button>
-                  </li>
-                  <li className="nav-item">
-                    <button
-                      className="btn btn-outline-danger nav-link px-4 px-md-3 py-md-3"
-                      onClick={() => navigate('/historial')}
-                    >
-                      Historial
-                    </button>
-                  </li>
-                  <li className="nav-item">
-                    <button
-                      className="btn btn-outline-danger nav-link px-4 px-md-3 py-md-3"
-                      onClick={() => navigate('/search')}
-                    >
-                      Buscar
-                    </button>
-                  </li>
-                  <li className="nav-item">
-                    <button
-                      className="btn btn-outline-danger nav-link px-4 px-md-3 py-md-3"
-                      onClick={() => navigate('/perfil')}
-                    >
-                      Perfil
-                    </button>
-                  </li>
-                </ul>
-              )}
-            </div>
-            <div className="col-2">
-              <ul className="navbar-nav">
-                <li className="nav-item">
-                  <button
-                    className="btn btn-sm btn-outline-danger nav-link col-12"
-                    onClick={LogOutUser}
-                  >
-                    <img width="22px" src={logout} alt="Logout" />
-                  </button>
-                </li>
-              </ul>
-            </div>
-          </div>
+          <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-4">
+            {renderNavItems()}
+            {userStore && userStore?.uid ? (
+              <li className="nav-item">
+                <button
+                  className="btn btn-sm btn-outline-danger"
+                  onClick={LogOutUser}
+                >
+                  <img width="22px" src={logout} alt="Logout" />
+                </button>
+              </li>
+            ) : (
+              <li className="nav-item">
+            <button
+              className="btn btn-outline-danger"
+              onClick={() => navigate('/signIn')}
+            >
+              logueate
+            </button>
+          </li>
+            )}
+          </ul>
         </div>
       </div>
     </nav>

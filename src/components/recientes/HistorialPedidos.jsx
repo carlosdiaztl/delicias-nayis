@@ -47,13 +47,7 @@ const HistorialPedidos = () => {
     dispatch(actionGetPlatosAsync());
   }, [dispatch]);
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (!user?.displayName) {
-        navigate(`/createaccount/${user.uid}`);
-      }
-    });
-  }, []);
+
   useEffect(() => {
     verCompras();
     verUserCompras();
